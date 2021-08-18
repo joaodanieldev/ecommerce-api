@@ -14,6 +14,12 @@ module Admin::V1
       render_error(fields: @category.errors.messages)
     end
 
+    def update
+      @category = Category.find(params[:id])
+      @category.attributes = category_params
+      save_category!
+    end
+
     private
 
     def category_params
